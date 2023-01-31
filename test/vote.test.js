@@ -13,5 +13,19 @@ contract("B2", async () => {
       const result = await vote.getUser();
       assert.equal(result, "spaceBest choi");
     });
+    it("setPoll", async () => {
+      await vote.setPoll("hello human", "are you happy?");
+    });
+    it("getPoll", async () => {
+      const result = await vote.getPoll("hello human");
+      assert.equal(result.title, "hello human");
+    });
+    it("vote", async () => {
+      await vote.vote("hello human", true);
+    });
+    it("getPoll", async () => {
+      const result = await vote.getPoll("hello human");
+      assert.equal(result.agree, 1);
+    });
   });
 });
