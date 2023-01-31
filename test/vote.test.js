@@ -1,6 +1,6 @@
 const daovote = artifacts.require("B2");
 
-contract("B2", async () => {
+contract("B2", async ([deployer, user]) => {
   let vote;
   before(async () => {
     vote = await daovote.new();
