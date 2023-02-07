@@ -1,6 +1,6 @@
 const daovote = artifacts.require("B2");
 
-contract("B2", async ([deployer, user]) => {
+contract("B2", async ([deployer, user1, user2]) => {
   let vote;
   before(async () => {
     vote = await daovote.new();
@@ -11,7 +11,7 @@ contract("B2", async ([deployer, user]) => {
     });
     it("getUser", async () => {
       const result = await vote.getUser();
-      assert.equal(result, "spaceBest choi");
+      assert.equal(result.toString(), { name: "spaceBest choi", length: 0 });
     });
     it("setPoll", async () => {
       await vote.setPoll("hello human", "are you happy?");
